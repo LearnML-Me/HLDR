@@ -21,7 +21,7 @@ Running English Julius transcription
 
 Running dictation-kit transcription
 * Download the Julius Japanese repository from GitHub.Enter the /github/dictation-kit$ directory and ensure that the audio file to be processed is in the directory. 
-* Input ``` ./bin/linux/Julius -C main.jconf -C an-dnn.jconf -dnnconf Julius.dnnconf -input rawfile -filelist audio.list```
+* Input ```./bin/linux/Julius -C main.jconf -C an-dnn.jconf -dnnconf Julius.dnnconf -input rawfile -filelist audio.list```
 * The command line should then output the Japanese transcript. The output includes 1st pass and 2nd pass which , but we used the 1st pass because it had sufficient accuracy.  
 
 Phase II
