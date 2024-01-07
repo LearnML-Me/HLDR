@@ -17,7 +17,7 @@ Running English Julius transcription
 * Ensure the audio recording is in the same directory. 
 * Run the command ```../julius/julius -C julius.jconf -dnnconf dnn.jconf``` (as stated in the [GitHub readme file] (https://github.com/julius-speech/julius)).
 * Press Enter to run.  The output should show the English transcription and transcription for the portion said in Japanese.
-* Optionally, instead of inputting the command from step 3, we inputted the command illustrated in Fig. 4 in order to output only the necessary data. The global regular expression print (grep) command in Linux was used to extract only the necessary output from the console. For the Julius English prompt, it ignored the “<s>” output and strictly outputted the words that were necessary for the code.
+* Optionally, instead of inputting the command from step 3, we inputted the command illustrated in Fig. 4 in order to output only the necessary data. The global regular expression print (grep) command in Linux was used to extract only the necessary output from the console.
 
 Running dictation-kit transcription
 * Download the Julius Japanese repository from GitHub.Enter the /github/dictation-kit$ directory and ensure that the audio file to be processed is in the directory. 
