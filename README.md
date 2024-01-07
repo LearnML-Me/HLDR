@@ -1,7 +1,5 @@
 # Heterogenous Language Detection and Re-transcription (HLDR)
 
-Simple overview of use/purpose.
-
 ## Description
 
 An in-depth paragraph about your project and overview of use.
