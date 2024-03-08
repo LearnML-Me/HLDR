@@ -30,7 +30,7 @@ Starting from a VM or Physical computer or even from a Cloud image like from AWS
 
 Running DeepSpeech to get the first STT English transcript:
 * Modify en1.sh to include the location of the Audio file. If the audio file is in the same folder, you can enter ./SimilarPronunciation-Short.wav
-* ```(venvp39) $ ./en1.sh```
+* ```(venvp39) $ bash ./en1.sh```
 * ```(venvp39) $ cat ./en1.txt```
 * You can see the first English transcript
 
@@ -40,7 +40,7 @@ Running English Julius to get the second STT English trasncript:
 * Ensure the audio recording is in the same directory. 
 * Run the command ```../julius/julius -C julius.jconf -dnnconf dnn.jconf``` (as stated in the [GitHub readme file] (https://github.com/julius-speech/julius)).
 * Identify the location of test.tbl file, and include the audio file's relative path to it. something like ../../SimilarPronunciation-Short.wav
-* ```(venvp39) $ ./en2.sh```
+* ```(venvp39) $ bash ./en2.sh```
 * ```(venvp39) $ cat ./en2.txt```
 * You can now see the second English transcript
 
@@ -51,7 +51,7 @@ Note: dictation kit uses your live microphone to get audio to create a transcrip
 * Create a file called audio.list and include the relative path to the SimilarPronunciation-Short.wav file.
 * Input ```./bin/linux/julius -C main.jconf -C an-dnn.jconf -dnnconf julius.dnnconf -input rawfile -filelist audio.list``` as a shell script and save it as ja.sh; be careful of the relative path to each software component, and adjust the path accordingly if you use a different path than mine.
 * The output includes 1st pass and 2nd pass which , but I used the 1st pass because it had sufficient accuracy.
-* ```(venvp39) $ ./ja.sh```
+* ```(venvp39) $ bash ./ja.sh```
 * ```(venvp39) $ cat ./ja.txt```
 * You can see the Japanese transcript
 
