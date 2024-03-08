@@ -1,6 +1,6 @@
 # Heterogenous Language Detection and Re-transcription (HLDR)
 ## This is a companion GitHub repo for the HLDR paper that is published at NLP2024 Japan. 
-[https://](https://www.anlp.jp/nlp2024/index.html) 
+[Natural Language Processing Society Japan 2024](https://www.anlp.jp/nlp2024/index.html) 
 My published paper: https://www.anlp.jp/proceedings/annual_meeting/2024/pdf_dir/B5-4.pdf
 
 ## Preparation and Execution
@@ -22,12 +22,13 @@ Starting from a VM or Physical computer or even from a Cloud image like from AWS
 * Install pip by downloading and install get-pip.py file from https://bootstrap.pypa.io/get-pip.py and run it: ```$ python get-pip.py ``` for the details, refer to: https://pip.pypa.io/en/stable/installation/
 * Install deepspeech using pip: ```$ pip3 install deepspeech ``` This will make the first STT software ready.
 * Next, install Julius English and Julius Japanese. Please refer to the official document link at the bottom of this page. Note that LFS needs to be install before hand, otherwise Japanese Julius dictation might git clone fail
-* Copy your audio file in mono channel (not Stereo!) with 16K and WAV format to the top folder of the all the STT software installed locations.
+* Copy your audio file in mono channel (not Stereo!) with Sample Rate 16KHz and WAV format to the top folder of the all the STT software installed locations. Note, this is the restriction from the STT software. If you don't have one, feel free to use my sample audio file: SimilarPronunciation-Short.wav
 * Create 3 bash scripts, so that you don't need to remember the long command line next time of running it. en1.sh; en2.sh; ja.sh For the details, please refer to the repo.
 * Make sure the 3 bash scripts and 1 Python script are ready, and start experience HLDR technology.
   
 Phase I
 Running DeepSpeech to get the first STT English transcript:
+* Modify en1.sh to include the location of the Audio file. If the audio file is in the same folder, you can enter ./SimilarPronunciation-Short.wav
 * ```(venvp39) $ ./en1.sh```
 * ```(venvp39) $ cat ./en1.txt```
 * You can see the first English transcript
@@ -39,6 +40,7 @@ Running English Julius to get the second STT English trasncript:
 * Run the command ```../julius/julius -C julius.jconf -dnnconf dnn.jconf``` (as stated in the [GitHub readme file] (https://github.com/julius-speech/julius)).
 * Press Enter to run.  The output should show the English transcription and transcription for the portion said in Japanese.
 * Optionally, instead of inputting the command from step 3, we inputted the command illustrated in Fig. 4 in order to output only the necessary data. The global regular expression print (grep) command in Linux was used to extract only the necessary output from the console.
+* Identify the location of test.tbl file, and include the audio file's relative path to it. something like ../../SimilarPronunciation-Short.wav
 * ```(venvp39) $ ./en2.sh```
 * ```(venvp39) $ cat ./en2.txt```
 * You can see the second English transcript
@@ -46,8 +48,9 @@ Running English Julius to get the second STT English trasncript:
 Running dictation-kit (Japanese Julius) get the STT Japanese transcript.
 * Download the Julius Japanese repository from GitHub with the reference link at botton of this page.
 * Enter the /github/dictation-kit$ directory and ensure that the audio file to be processed is in the directory. 
-* Input ```./bin/linux/julius -C main.jconf -C an-dnn.jconf -dnnconf julius.dnnconf -input rawfile -filelist audio.list```  (Here 
-* The command line should then output the Japanese transcript. The output includes 1st pass and 2nd pass which , but we used the 1st pass because it had sufficient accuracy.  
+* Create a file called audio.list and include the relative path to the SimilarPronunciation-Short.wav file.
+* Input ```./bin/linux/julius -C main.jconf -C an-dnn.jconf -dnnconf julius.dnnconf -input rawfile -filelist audio.list``` as a shell script and save it as ja.sh; be careful of the relative path to each software component, and adjust the path accordingly if you use a different path than mine.
+* The output includes 1st pass and 2nd pass which , but we used the 1st pass because it had sufficient accuracy.
 * ```(venvp39) $ ./ja.sh```
 * ```(venvp39) $ cat ./ja.txt```
 * You can see the Japanese transcript
